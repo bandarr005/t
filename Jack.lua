@@ -8543,16 +8543,16 @@ end
 function CaptionInsert(msg,input,public)
 if msg.content and msg.content.caption then 
 if public then
-redis:hset(Jack..':caption_replay:Random:'..msg.klma,input,msg.content.caption) 
+redis:hset(Jack..':caption_replay:Random:'..klma,input,msg.content.caption) 
 else
-redis:hset(Jack..':caption_replay:Random:'..msg.chat_id..msg.klma,input,msg.content.caption) 
+redis:hset(Jack..':caption_replay:Random:'..msg.chat_id..klma,input,msg.content.caption) 
 end
 end
 end
 
 if text or msg.content.video_note or msg.content.document or msg.content.audio or msg.content.video or msg.content.voice_note or msg.content.sticker or msg.content.animation or msg.content.photo and redis:get(Jack..'addrdRandomPublic:'..msg.chat_id..msg.sender.user_id) and redis:get(Jack..'replay1RandomPublic'..msg.chat_id..msg.sender.user_id) then
 klma = redis:get(Jack..'replay1RandomPublic'..msg.chat_id..msg.sender.user_id)
-msg.klma = klma
+klma = klma
 if text == "تم" then
 redis:del(Jack..'addrdRandom1Public:'..msg.chat_id..msg.sender.user_id)
 redis:del(Jack..'addrdRandomPublic:'..msg.chat_id..msg.sender.user_id)
